@@ -44,7 +44,7 @@ class CarlistViewModel(application: Application) : AndroidViewModel(application)
             for ((count, carList) in data.withIndex()) {
                 Log.e("CarList: ", carList.toString() + "")
                 dataList.add(Car(data[count].make, data[count].marketPrice,
-                        data[count].rating, carImages[count]))
+                        data[count].rating, carImages[count], data[count].prosList, data[count].consList))
             }
 
             carList.setValue(dataList)
