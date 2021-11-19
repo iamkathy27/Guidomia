@@ -26,6 +26,9 @@ class CarlistViewModel(application: Application) : AndroidViewModel(application)
         return carList
     }
 
+    /**
+     * Method to parse the local json
+     */
     private fun getResult(context: Context) {
         try {
             var json: String? = null

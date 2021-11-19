@@ -5,177 +5,177 @@
 
     <data>
         <variable
-            name="type"
+            name="carInfo"
             type="com.directory.conslist.model.Car" />
+
+        <variable
+            name="onClickExpandListener"
+            type="com.directory.conslist.ClickCarListener" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        tools:ignore="MissingConstraints"
+        android:onClick="@{() -> onClickExpandListener.expandCarDetails(carInfo)}">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/details_ll"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintTop_toBottomOf="parent"
-            tools:ignore="MissingConstraints">
+            android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/details_ll"
+                android:id="@+id/details_1row"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_height="150dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:background="@color/light_gray"
+                android:padding="@dimen/layout_margin_20">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".5"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{carInfo.image}">
+                </ImageView>
 
                 <LinearLayout
-                    android:id="@+id/details_1row"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:background="@color/light_gray"
-                    android:padding="@dimen/layout_margin_20">
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".5"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp">
 
-                    <ImageView
-                        android:layout_width="0dp"
+                    <TextView
+                        style="@style/Font24Normal"
+                        android:id="@+id/car_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{carInfo.make}">
+
+                    </TextView>
+
+                    <TextView
+                        style="@style/Font18Normal"
+                        android:id="@+id/car_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{`Price: ` + carInfo.price}">
+
+                    </TextView>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight=".5"
-                        android:scaleType="centerCrop"
-                        app:imageUrl="@{type.image}">
-                    </ImageView>
+                        android:gravity="bottom">
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight=".5"
-                        android:orientation="vertical"
-                        android:paddingLeft="16dp">
-
-                        <TextView
-                            style="@style/Font24Normal"
-                            android:id="@+id/car_name"
-                            android:layout_width="match_parent"
+                        <ImageView
+                            android:id="@+id/rate_1"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{type.make}">
+                            android:src="@drawable/ic_baseline_star_rate_24" />
 
-                        </TextView>
-
-                        <TextView
-                            style="@style/Font18Normal"
-                            android:id="@+id/car_price"
-                            android:layout_width="match_parent"
+                        <ImageView
+                            android:id="@+id/rate_2"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@{`Price: ` + type.price}">
+                            android:layout_toRightOf="@+id/rate_1"
+                            android:src="@drawable/ic_baseline_star_rate_24"
+                            android:layout_marginLeft="@dimen/layout_margin_5"/>
 
-                        </TextView>
+                        <ImageView
+                            android:id="@+id/rate_3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/rate_2"
+                            android:src="@drawable/ic_baseline_star_rate_24"
+                            android:layout_marginLeft="@dimen/layout_margin_5" />
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="bottom">
+                        <ImageView
+                            android:id="@+id/rate_4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/rate_3"
+                            android:src="@drawable/ic_baseline_star_rate_24"
+                            android:layout_marginLeft="@dimen/layout_margin_5" />
 
-                            <ImageView
-                                android:id="@+id/rate_1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_baseline_star_rate_24" />
+                        <ImageView
+                            android:id="@+id/rate_5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/rate_4"
+                            android:src="@drawable/ic_baseline_star_rate_24"
+                            android:layout_marginLeft="@dimen/layout_margin_5" />
+                    </RelativeLayout>
 
-                            <ImageView
-                                android:id="@+id/rate_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/rate_1"
-                                android:src="@drawable/ic_baseline_star_rate_24"
-                                android:layout_marginLeft="@dimen/layout_margin_5"/>
-
-                            <ImageView
-                                android:id="@+id/rate_3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/rate_2"
-                                android:src="@drawable/ic_baseline_star_rate_24"
-                                android:layout_marginLeft="@dimen/layout_margin_5" />
-
-                            <ImageView
-                                android:id="@+id/rate_4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/rate_3"
-                                android:src="@drawable/ic_baseline_star_rate_24"
-                                android:layout_marginLeft="@dimen/layout_margin_5" />
-
-                            <ImageView
-                                android:id="@+id/rate_5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/rate_4"
-                                android:src="@drawable/ic_baseline_star_rate_24"
-                                android:layout_marginLeft="@dimen/layout_margin_5" />
-                        </RelativeLayout>
-
-                    </LinearLayout>
                 </LinearLayout>
-
-                <RelativeLayout
-                    android:id="@+id/details_2nd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="1"
-                    android:background="@color/light_gray"
-                    android:padding="@dimen/layout_margin_20"
-                    android:visibility="visible">
-
-                    <TextView
-                        style="@style/Font18Normal"
-                        android:id="@+id/pros_lbl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/pros">
-
-                    </TextView>
-
-                    <TextView
-                        style="@style/Font16Normal"
-                        android:id="@+id/pros_list"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/pros_lbl"
-                        android:layout_marginLeft="@dimen/layout_margin_10">
-
-                    </TextView>
-
-                    <TextView
-                        style="@style/Font18Normal"
-                        android:id="@+id/cons_lbl"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cons"
-                        android:layout_below="@+id/pros_list"
-                        android:layout_marginTop="@dimen/layout_margin_10">
-
-                    </TextView>
-
-                    <TextView
-                        style="@style/Font16Normal"
-                        android:id="@+id/cons_list"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/cons_lbl"
-                        android:layout_marginLeft="@dimen/layout_margin_10">
-
-                    </TextView>
-
-                </RelativeLayout>
-
             </LinearLayout>
 
-            <View
+            <RelativeLayout
+                android:id="@+id/details_2nd"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/layout_margin_3"
-                android:background="@color/orange"
-                android:layout_below="@+id/details_ll"
-                android:layout_margin="@dimen/layout_margin_20">
-            </View>
-        </RelativeLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:background="@color/light_gray"
+                android:padding="@dimen/layout_margin_20"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/Font18Normal"
+                    android:id="@+id/pros_lbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pros">
+
+                </TextView>
+
+                <TextView
+                    style="@style/Font16Normal"
+                    android:id="@+id/pros_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pros_lbl"
+                    android:layout_marginLeft="@dimen/layout_margin_10">
+
+                </TextView>
+
+                <TextView
+                    style="@style/Font18Normal"
+                    android:id="@+id/cons_lbl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cons"
+                    android:layout_below="@+id/pros_list"
+                    android:layout_marginTop="@dimen/layout_margin_10">
+
+                </TextView>
+
+                <TextView
+                    style="@style/Font16Normal"
+                    android:id="@+id/cons_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cons_lbl"
+                    android:layout_marginLeft="@dimen/layout_margin_10">
+
+                </TextView>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/layout_margin_3"
+            android:background="@color/orange"
+            android:layout_below="@+id/details_ll"
+            android:layout_margin="@dimen/layout_margin_20">
+        </View>
+    </RelativeLayout>
 </layout>
